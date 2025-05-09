@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITC2Wedstrijd.Views.OverzichtPloegenPage"
+             xmlns:models="clr-namespace:ITC2Wedstrijd.Models"
+             xmlns:viewmodels="clr-namespace:ITC2Wedstrijd.ViewModels"
+             x:DataType="viewmodels:OverzichtPloegenViewModel"
+             Title="Overzicht Ploegen">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Clubs}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Club">
+                    <VerticalStackLayout>
+                        <Label FontSize="20" FontAttributes="Bold" Text="{Binding Naam}" Padding="5,10,0,0" />
+                        <CollectionView ItemsSource="{Binding Ploegen}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Ploeg">
+                                    <Label FontSize="14" Text="{Binding Naam}" Padding="10,0,0,0"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

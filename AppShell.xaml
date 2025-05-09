@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ITC2Wedstrijd.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ITC2Wedstrijd.Views"
+    FlyoutBehavior="Locked"
+    FlyoutWidth="200"
+    Title="ITC2Wedstrijd">
+
+    <ShellContent Title="Home" 
+                    ContentTemplate="{DataTemplate views:MainPage}"/>
+    <ShellContent Title="Wedstrijd"
+                    ContentTemplate="{DataTemplate views:WedstrijdenPage}" />
+    <ShellContent Title="Categorie"
+                    ContentTemplate="{DataTemplate views:CategoriePage}" />
+    <ShellContent Title="Club"
+                    ContentTemplate="{DataTemplate views:ClubPage}" />
+    <ShellContent Title="Sport"
+                    ContentTemplate="{DataTemplate views:SportPage}" />
+    <ShellContent Title="Speler"
+                    ContentTemplate="{DataTemplate views:SpelerPage}" />
+    <ShellContent Title="Ploeg"
+                    ContentTemplate="{DataTemplate views:PloegPage}" />    
+    <ShellContent Title="Teams"
+                    ContentTemplate="{DataTemplate views:TeamsPage}" />
+    <ShellContent Title="Overzicht ploegen"
+                    ContentTemplate="{DataTemplate views:OverzichtPloegenPage}" />
+    <ShellContent Title="Overzicht spelers"
+                    ContentTemplate="{DataTemplate views:OverzichtSpelersPage}" />
+    <ShellContent Title="Overzicht wedstrijden"
+                    ContentTemplate="{DataTemplate views:OverzichtWedstrijdenPage}" />
+
+</Shell>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITC2Wedstrijd.Views.TeamsPage"
+             xmlns:viewmodel="clr-namespace:ITC2Wedstrijd.ViewModels"
+             xmlns:model="clr-namespace:ITC2Wedstrijd.Models" 
+             x:DataType="viewmodel:TeamsViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button Text="Teams ophalen" Command="{Binding TeamsOphalenCommand}" />
+
+            <CollectionView ItemsSource="{Binding Teams}" EmptyView="Er zijn nog geen teams." ItemsLayout="VerticalGrid, 5">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Team">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Source="{Binding strBadge}" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+                                <Label Grid.Row="1" Text="{Binding strTeam}" HorizontalOptions="Center" />
+                                <Label Grid.Row="2" Text="{Binding strCountry}" HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,31 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITC2Wedstrijd.Views.OverzichtWedstrijdenPage"
+             xmlns:models="clr-namespace:ITC2Wedstrijd.Models"
+             xmlns:viewmodels="clr-namespace:ITC2Wedstrijd.ViewModels"
+             x:DataType="viewmodels:OverzichtWedstrijdenViewModel"
+             Title="Overzicht Wedstrijden">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Ploegen}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Ploeg">
+                    <VerticalStackLayout>
+                        <Label FontSize="20" FontAttributes="Bold" Text="{Binding Naam}" Padding="5,10,0,0" />
+                        <HorizontalStackLayout>
+                            <Label FontSize="14" Text="Gewonnen: " Padding="10,0,0,0"/>
+                            <Label FontSize="14" Text="{Binding AantalGewonnen}" Padding="10,0,0,0"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label FontSize="14" Text="Verloren: " Padding="10,0,0,0"/>
+                            <Label FontSize="14" Text="{Binding AantalVerloren}" Padding="10,0,0,0"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label FontSize="14" Text="Gelijk: " Padding="10,0,0,0"/>
+                            <Label FontSize="14" Text="{Binding AantalGelijk}" Padding="10,0,0,0"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

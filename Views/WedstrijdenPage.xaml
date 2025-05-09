@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ITC2Wedstrijd.Views.WedstrijdenPage"
+             xmlns:viewmodel="clr-namespace:ITC2Wedstrijd.ViewModels"
+             xmlns:model="clr-namespace:ITC2Wedstrijd.Models" 
+             x:DataType="viewmodel:WedstrijdenViewModel"
+             Title="{Binding Title}">
+    <Grid RowDefinitions="*" ColumnDefinitions="*, *">
+        <ScrollView Grid.Row="0" Grid.Column="0" >
+            <VerticalStackLayout>
+                <HorizontalStackLayout>
+                    <Picker  />
+                    <Picker />
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding Wedstrijden}" SelectionMode="Single" EmptyView="Er zijn nog geen wedstrijden." SelectedItem="{Binding SelectedWedstrijd}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate  x:DataType="model:Wedstrijd">
+                            <VerticalStackLayout Padding="5">
+                                <Label FontSize="14" Text="{Binding .}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Fill" VerticalOptions="Center" Color="{StaticResource Primary}" Grid.RowSpan="1" Grid.ColumnSpan="1" />
+        <ScrollView Grid.Row="0" Grid.Column="1">
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="{Binding ActieLabel}" FontSize="Header"/>
+                <Label Text="{Binding FoutMelding}" TextColor="Red" FontSize="Small"/>
+                <Label Text="Kies ploeg 1" />
+                <Picker ItemsSource="{Binding Ploegen , Mode=TwoWay}" SelectedItem="{Binding SelectedWedstrijd.Ploeg1 , Mode=TwoWay}"/>
+                <Label Text="Kies ploeg 2" />
+                <Picker ItemsSource="{Binding Ploegen , Mode=TwoWay}" SelectedItem="{Binding SelectedWedstrijd.Ploeg2 , Mode=TwoWay}"/>
+                <Label Text="Geef score voor ploeg 1" />
+                <Entry Text="{Binding SelectedWedstrijd.UitslagPloeg1}"/>
+                <Label Text="Geef score voor ploeg 2" />
+                <Entry Text="{Binding SelectedWedstrijd.UitslagPloeg2}"/>
+                <Label Text="Selecteer de wedstrijddatum" />
+                <DatePicker Date="{Binding SelectedWedstrijd.Datum}" Format="dd/mm/yyyy"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Toevoegen" Command="{Binding ToevoegenCommand}"/>
+                    <Button Text="Wijzigen" Command="{Binding WijzigenCommand}"/>
+                    <Button Text="Verwijderen" Command="{Binding VerwijderenCommand}"/>
+                    <Button Text="Deselecteren" Command="{Binding DeselecterenCommand}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
